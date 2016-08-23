@@ -12,6 +12,7 @@
 #import "Media.h"
 #import "User.h"
 #import "Comment.h"
+#import "MediaTableViewCell.h"
 
 @interface ImagesTableViewController ()
 
@@ -41,7 +42,7 @@
     
    
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"imageCell"];
+    [self.tableView registerClass:[MediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -56,8 +57,8 @@
 }
 
 - (NSArray*) items {
-    NSArray * itemsFromInstance = [DataSource sharedInstance].mediaItems;
-    return itemsFromInstance;
+    NSArray * itemsArray = [DataSource sharedInstance].mediaItems;
+    return itemsArray;
 }
 
 #pragma mark - Table view data source
@@ -72,29 +73,13 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imageCell" forIndexPath:indexPath];
+    
     
     // Configure the cell...
     // #2
     
-    static NSInteger imageViewTag = 1234;
-    UIImageView *imageView = (UIImageView*)[cell.contentView viewWithTag:imageViewTag];
-    
-    // #3
-    if (!imageView) {
-        // This is a new cell, it doesn't have an image view yet
-        imageView = [[UIImageView alloc] init];
-        imageView.contentMode = UIViewContentModeScaleToFill;
-        
-        imageView.frame = cell.contentView.bounds;
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        
-        imageView.tag = imageViewTag;
-        [cell.contentView addSubview:imageView];
-    }
-    
-    Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
-    imageView.image = item.image;
+    MediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mediaCell" forIndexPath:indexPath];
+    cell.mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
     
     
     
@@ -104,10 +89,9 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
-    UIImage *image = item.image;
     
-    return image.size.height / image.size.width * CGRectGetWidth(self.view.frame);
-    return (CGRectGetWidth(self.view.frame) / image.size.width) * image.size.height;
+    return [MediaTableViewCell heightForMediaItem:item width:CGRectGetWidth(self.view.frame)];
+
 }
 
 
@@ -125,10 +109,15 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         
-     
-        
+//        Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
+//        [[DataSource sharedInstance] deleteMediaItem:item];
+////
+//        [[DataSource sharedInstance] removeObjectAtIndex:mediaItems.indexPath.row];
+//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        
 //        [_images removeObjectAtIndex:indexPath.row];
 //        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
