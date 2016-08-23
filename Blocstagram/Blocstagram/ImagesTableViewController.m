@@ -63,23 +63,24 @@
 
 #pragma mark - Table view data source
 
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [self items].count;
+    return self.items.count;
     
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
     // Configure the cell...
     // #2
     
     MediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mediaCell" forIndexPath:indexPath];
-    cell.mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
+    cell.mediaItem = self.items[indexPath.row];
     
     
     
@@ -88,11 +89,12 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];
+    Media *item = self.items[indexPath.row];
     
     return [MediaTableViewCell heightForMediaItem:item width:CGRectGetWidth(self.view.frame)];
 
 }
+
 
 
 
