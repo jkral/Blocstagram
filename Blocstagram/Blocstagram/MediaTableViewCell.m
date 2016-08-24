@@ -152,7 +152,21 @@ static UIColor *commentOrange;
         
         // Make an attributed string, with the "username" bold
         
-        NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSForegroundColorAttributeName : commentOrange,NSParagraphStyleAttributeName : paragraphStyle}];
+        if (comment == self.mediaItem.comments[0]) {
+            
+            NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSForegroundColorAttributeName : commentOrange,NSParagraphStyleAttributeName : paragraphStyle}];
+            
+            
+            NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
+            [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
+            [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
+            
+            [commentString appendAttributedString:oneCommentString];
+            
+        
+        }
+        
+        NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSForegroundColorAttributeName : linkColor,NSParagraphStyleAttributeName : paragraphStyle}];
         
         NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
         [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
