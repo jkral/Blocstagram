@@ -189,7 +189,6 @@ static UIColor *commentOrange;
             
             [commentString appendAttributedString:oneCommentString];
             
-            
         }
         
         
