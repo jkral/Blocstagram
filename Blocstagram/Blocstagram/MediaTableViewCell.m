@@ -55,7 +55,10 @@ static UIColor *commentOrange;
         
         NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel);
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_mediaImageView]|" options:kNilOptions metrics:nil views:viewDictionary]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_mediaImageView(<=100)]|" options:kNilOptions metrics:nil views:viewDictionary]];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_mediaImageView(<=100)]|" options:kNilOptions metrics:nil views:viewDictionary]];
+        
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
         
@@ -64,14 +67,14 @@ static UIColor *commentOrange;
                                                                                  metrics:nil
                                                                                    views:viewDictionary]];
         
-        self.imageHeightConstraint = [NSLayoutConstraint constraintWithItem:_mediaImageView
-                                                                  attribute:NSLayoutAttributeHeight
-                                                                  relatedBy:NSLayoutRelationEqual
-                                                                     toItem:nil
-                                                                  attribute:NSLayoutAttributeNotAnAttribute
-                                                                 multiplier:1
-                                                                   constant:100];
-        self.imageHeightConstraint.identifier = @"Image height constraint";
+//        self.imageHeightConstraint = [NSLayoutConstraint constraintWithItem:_mediaImageView
+//                                                                  attribute:NSLayoutAttributeHeight
+//                                                                  relatedBy:NSLayoutRelationEqual
+//                                                                     toItem:nil
+//                                                                  attribute:NSLayoutAttributeNotAnAttribute
+//                                                                 multiplier:1
+//                                                                   constant:100];
+//        self.imageHeightConstraint.identifier = @"Image height constraint";
         
         self.usernameAndCaptionLabelHeightConstraint = [NSLayoutConstraint constraintWithItem:_usernameAndCaptionLabel
                                                                                     attribute:NSLayoutAttributeHeight
@@ -91,7 +94,10 @@ static UIColor *commentOrange;
                                                                           constant:100];
         self.commentLabelHeightConstraint.identifier = @"Comment label height constraint";
         
-        [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
+        
+//        self.imageHeightConstraint,
+        
+        [self.contentView addConstraints:@[ self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
     }
     return self;
 }
@@ -146,13 +152,15 @@ static UIColor *commentOrange;
 - (NSAttributedString *) commentString {
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] init];
     
-    for (Comment *comment in self.mediaItem.comments) {
+    for (int i=0; i<self.mediaItem.comments.count; i++) {
+        Comment *comment = self.mediaItem.comments[i];
+        
         // Make a string that says "username comment" followed by a line break
         NSString *baseString = [NSString stringWithFormat:@"%@ %@\n", comment.from.userName, comment.text];
         
         // Make an attributed string, with the "username" bold
         
-        if (comment == self.mediaItem.comments[0]) {
+        if (i == 0) {
             
             NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSForegroundColorAttributeName : commentOrange,NSParagraphStyleAttributeName : paragraphStyle}];
             
@@ -163,10 +171,31 @@ static UIColor *commentOrange;
             
             [commentString appendAttributedString:oneCommentString];
             
-        
         }
         
+        if (i % 2 == 0) {
+            
+            NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSForegroundColorAttributeName : linkColor,NSParagraphStyleAttributeName : paragraphStyle}];
+            
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init] ;
+            [paragraphStyle setAlignment:NSTextAlignmentRight];
+            
+            [oneCommentString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [oneCommentString length])];
+            
+            
+            NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
+            [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
+            [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
+            
+            [commentString appendAttributedString:oneCommentString];
+            
+            
+        }
+        
+        
+        
         NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSForegroundColorAttributeName : linkColor,NSParagraphStyleAttributeName : paragraphStyle}];
+        
         
         NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
         [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
