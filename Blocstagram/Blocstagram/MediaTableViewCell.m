@@ -55,10 +55,7 @@ static UIColor *commentOrange;
         
         NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel);
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_mediaImageView(<=100)]|" options:kNilOptions metrics:nil views:viewDictionary]];
-        
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_mediaImageView(<=100)]|" options:kNilOptions metrics:nil views:viewDictionary]];
-        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_mediaImageView(100)]-|" options:kNilOptions metrics:nil views:viewDictionary]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
         
@@ -67,14 +64,14 @@ static UIColor *commentOrange;
                                                                                  metrics:nil
                                                                                    views:viewDictionary]];
         
-//        self.imageHeightConstraint = [NSLayoutConstraint constraintWithItem:_mediaImageView
-//                                                                  attribute:NSLayoutAttributeHeight
-//                                                                  relatedBy:NSLayoutRelationEqual
-//                                                                     toItem:nil
-//                                                                  attribute:NSLayoutAttributeNotAnAttribute
-//                                                                 multiplier:1
-//                                                                   constant:100];
-//        self.imageHeightConstraint.identifier = @"Image height constraint";
+        self.imageHeightConstraint = [NSLayoutConstraint constraintWithItem:_mediaImageView
+                                                                  attribute:NSLayoutAttributeHeight
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:nil
+                                                                  attribute:NSLayoutAttributeNotAnAttribute
+                                                                 multiplier:1
+                                                                   constant:100];
+        self.imageHeightConstraint.identifier = @"Image height constraint";
         
         self.usernameAndCaptionLabelHeightConstraint = [NSLayoutConstraint constraintWithItem:_usernameAndCaptionLabel
                                                                                     attribute:NSLayoutAttributeHeight
@@ -94,10 +91,7 @@ static UIColor *commentOrange;
                                                                           constant:100];
         self.commentLabelHeightConstraint.identifier = @"Comment label height constraint";
         
-        
-//        self.imageHeightConstraint,
-        
-        [self.contentView addConstraints:@[ self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
+        [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
     }
     return self;
 }
@@ -224,7 +218,7 @@ static UIColor *commentOrange;
          self.commentLabelHeightConstraint.constant = commentLabelSize.height == 0 ? 0 : commentLabelSize.height + 20;
     
     if (self.mediaItem.image.size.width > 0 && CGRectGetWidth(self.contentView.bounds) > 0) {
-        self.imageHeightConstraint.constant = self.mediaItem.image.size.height / self.mediaItem.image.size.width * CGRectGetWidth(self.contentView.bounds);
+        self.imageHeightConstraint.constant = 100;//self.mediaItem.image.size.height / self.mediaItem.image.size.width * CGRectGetWidth(self.contentView.bounds);
     } else {
         self.imageHeightConstraint.constant = 0;
     }

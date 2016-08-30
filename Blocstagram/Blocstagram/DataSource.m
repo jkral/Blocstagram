@@ -25,6 +25,10 @@
 
 @implementation DataSource
 
++ (NSString *) instagramClientID {
+    return @"6d08e521c22540c0bc7ba6b9f9bc4732";
+}
+
 #pragma mark - Key/Value Observing
 
 - (NSUInteger) countOfMediaItems {
