@@ -27,6 +27,7 @@
 		C59AEF1C1D6A48FE004588A5 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEF1B1D6A48FE004588A5 /* Comment.m */; };
 		C59AEF1F1D6A4ADD004588A5 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEF1E1D6A4ADD004588A5 /* DataSource.m */; };
 		C59AEF221D6B8AD9004588A5 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEF211D6B8AD9004588A5 /* MediaTableViewCell.m */; };
+		C5DFFF191D763B3900975E68 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFF181D763B3900975E68 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,8 @@
 		C59AEF1E1D6A4ADD004588A5 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		C59AEF201D6B8AD9004588A5 /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
 		C59AEF211D6B8AD9004588A5 /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
+		C5DFFF171D763B3800975E68 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C5DFFF181D763B3900975E68 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				C59AEF1E1D6A4ADD004588A5 /* DataSource.m */,
 				C59AEF201D6B8AD9004588A5 /* MediaTableViewCell.h */,
 				C59AEF211D6B8AD9004588A5 /* MediaTableViewCell.m */,
+				C5DFFF171D763B3800975E68 /* LoginViewController.h */,
+				C5DFFF181D763B3900975E68 /* LoginViewController.m */,
 			);
 			path = Blocstagram;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				C59AEF221D6B8AD9004588A5 /* MediaTableViewCell.m in Sources */,
 				C59AEF191D6A44E0004588A5 /* Media.m in Sources */,
 				C59AEEEA1D64F9C6004588A5 /* AppDelegate.m in Sources */,
+				C5DFFF191D763B3900975E68 /* LoginViewController.m in Sources */,
 				C59AEF1F1D6A4ADD004588A5 /* DataSource.m in Sources */,
 				C59AEEE71D64F9C6004588A5 /* main.m in Sources */,
 				C59AEF131D6500CA004588A5 /* ImagesTableViewController.m in Sources */,
@@ -366,6 +372,7 @@
 				C59AEEFB1D64F9C7004588A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
