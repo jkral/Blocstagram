@@ -28,11 +28,8 @@
     // Do any additional setup after loading the view.
     
     
-   
-    
-    
-    
-    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backWasClicked:)];
+    [self.navigationItem setLeftBarButtonItem:backButton animated:YES];
     
     
     UIWebView *webView = [[UIWebView alloc] init];
@@ -51,6 +48,14 @@
         [self.webView loadRequest:request];
     
     }
+}
+
+- (void)backWasClicked:(id)sender {
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
+        
+    }
+    
 }
 
 - (void) viewWillLayoutSubviews {
@@ -88,7 +93,6 @@
         NSString *accessToken = [urlString substringFromIndex:indexOfTokenStarting];
         [[NSNotificationCenter defaultCenter] postNotificationName:LoginViewControllerDidGetAccessTokenNotification object:accessToken];
         
-      
         
         return NO;
     }
@@ -97,10 +101,6 @@
     
     return YES;
 }
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning {
