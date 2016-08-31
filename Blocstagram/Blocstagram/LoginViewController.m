@@ -20,12 +20,19 @@
  NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewControllerDidGetAccessTokenNotification";
 
 - (NSString *)redirectURI {
-    return @"http://bloc.io";
+    return @"http://www.bloc.io";
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+   
+    
+    
+    
+    
     
     
     UIWebView *webView = [[UIWebView alloc] init];
