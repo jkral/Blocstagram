@@ -23,14 +23,12 @@
     return @"http://www.bloc.io";
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backWasClicked:)];
-    [self.navigationItem setLeftBarButtonItem:backButton animated:YES];
-    
+   
     
     UIWebView *webView = [[UIWebView alloc] init];
     webView.delegate = self;
@@ -48,7 +46,12 @@
         [self.webView loadRequest:request];
     
     }
+    
+    
+    
 }
+
+
 
 - (void)backWasClicked:(id)sender {
     if ([self.webView canGoBack]) {
@@ -60,6 +63,7 @@
 
 - (void) viewWillLayoutSubviews {
     self.webView.frame = self.view.bounds;
+    
     
   
 }
@@ -86,6 +90,9 @@
 
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSString *urlString = request.URL.absoluteString;
+    
+   
+    
     if ([urlString hasPrefix:[self redirectURI]]) {
         // This contains our auth token
         NSRange rangeOfAccessTokenParameter = [urlString rangeOfString:@"access_token="];
@@ -97,7 +104,17 @@
         return NO;
     }
     
-    
+   
+    if ([self.webView canGoBack]) {
+        
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backWasClicked:)];
+        
+        [self.navigationItem setLeftBarButtonItem:backButton animated:YES];
+    } else {
+        
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+       
     
     return YES;
 }
@@ -117,5 +134,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
 
 @end
