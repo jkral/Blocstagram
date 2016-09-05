@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface User : NSObject
+
+@interface User : NSObject <NSCoding>
+
+#pragma mark - NSCoding
+
+
 
 @property (nonatomic, strong) NSString *idNumber;
 @property (nonatomic, strong) NSString *userName;
