@@ -104,7 +104,11 @@
                         //#1
                         for (Media* mediaItem in self.mediaItems) {
                             [self downloadImageForMediaItem:mediaItem];
+                            
+                            
                         }
+                        
+                        [[DataSource sharedInstance] requestNewItemsWithCompletionHandler:nil];
                         
                         
                     } else {
