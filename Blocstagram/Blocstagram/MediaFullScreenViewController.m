@@ -58,6 +58,26 @@
     
     [self.scrollView addGestureRecognizer:self.tap];
     [self.scrollView addGestureRecognizer:self.doubleTap];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self
+               action:@selector(sharePressed)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Share" forState:UIControlStateNormal];
+    button.frame = CGRectMake(250, 20, 160.0, 40.0);
+    button.backgroundColor = [UIColor redColor];
+    [self.view addSubview:button];
+    
+}
+
+- (void) sharePressed {
+    
+    NSArray *shareItems = @[self.media.image, self.media.caption];
+
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:shareItems applicationActivities:nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    
+    
 }
 
 #pragma mark - Gesture Recognizers
