@@ -14,9 +14,11 @@
 #import "Comment.h"
 #import "MediaTableViewCell.h"
 #import "MediaFullScreenViewController.h"
+#import "MediaFullScreenAnimator.h"
 
-@interface ImagesTableViewController () <MediaTableViewCellDelegate>
+@interface ImagesTableViewController () <MediaTableViewCellDelegate, UIViewControllerTransitioningDelegate>
 
+@property (nonatomic, weak) UIImageView *lastTappedImageView;
 @property (nonatomic, strong) NSMutableArray *images;
 
 @end
@@ -185,7 +187,13 @@
 #pragma mark - MediaTableViewCellDelegate
 
 - (void) cell:(MediaTableViewCell *)cell didTapImageView:(UIImageView *)imageView {
+    
+        self.lastTappedImageView = imageView;
+    
     MediaFullScreenViewController *fullScreenVC = [[MediaFullScreenViewController alloc] initWithMedia:cell.mediaItem];
+    
+    fullScreenVC.transitioningDelegate = self;
+    fullScreenVC.modalPresentationStyle = UIModalPresentationCustom;
     
     [self presentViewController:fullScreenVC animated:YES completion:nil];
 }
@@ -222,6 +230,23 @@
     } else {
         return 150;
     }
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source {
+    MediaFullScreenAnimator *animator = [MediaFullScreenAnimator new];
+    animator.presenting = YES;
+    animator.cellImageView = self.lastTappedImageView;
+    return animator;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    MediaFullScreenAnimator *animator = [MediaFullScreenAnimator new];
+    animator.cellImageView = self.lastTappedImageView;
+    return animator;
 }
 
 
