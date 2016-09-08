@@ -77,7 +77,6 @@
         UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:shareItems applicationActivities:nil];
         [self presentViewController:activityVC animated:YES completion:nil];
     
-    
 }
 
 #pragma mark - Gesture Recognizers
