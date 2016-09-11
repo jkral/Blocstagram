@@ -80,10 +80,12 @@
 
 #pragma mark - UIScrollViewDelegate
 
-// #4
+ #4
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self infiniteScrollIfNecessary];
 }
+
+
 
 
 - (void) dealloc
@@ -185,12 +187,25 @@
 }
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     Media *mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
+    
     if (mediaItem.downloadState == MediaDownloadStateNeedsImage) {
         [[DataSource sharedInstance] downloadImageForMediaItem:mediaItem];
     }
 }
 
+- (void) scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    
+    if ((scrollView.decelerationRate == UIScrollViewDecelerationRateNormal) && (!scrollView.dragging)) {
+        
+        NSArray *visibleCells = [self.tableView visibleCells];
+        for (MediaTableViewCell *cell in visibleCells) {
+            [[DataSource sharedInstance] downloadImageForMediaItem:cell.mediaItem];
+        }
+    }
+    
+}
 
 #pragma mark - MediaTableViewCellDelegate
 
