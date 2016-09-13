@@ -76,6 +76,7 @@
         self.comments = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(comments))];
         self.likeState = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(likeState))];
         
+        
     }
     
     return self;
@@ -90,6 +91,9 @@
     [aCoder encodeObject:self.comments forKey:NSStringFromSelector(@selector(comments))];
     [aCoder encodeInteger:self.likeState forKey:NSStringFromSelector(@selector(likeState))];
     
+    
 }
+
+
 
 @end

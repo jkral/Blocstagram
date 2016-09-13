@@ -11,9 +11,10 @@
 #import "Comment.h"
 #import "User.h"
 #import "LikeButton.h"
+#import "ComposeCommentView.h"
 
 
-@interface MediaTableViewCell () <UIGestureRecognizerDelegate>
+@interface MediaTableViewCell () <UIGestureRecognizerDelegate, ComposeCommentViewDelegate>
 
 @property (nonatomic, strong) UIImageView *mediaImageView;
 @property (nonatomic, strong) UILabel *usernameAndCaptionLabel;
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @property (nonatomic, strong) LikeButton *likeButton;
+@property (nonatomic, strong) ComposeCommentView *commentView;
 
 @end
 
@@ -61,6 +63,7 @@ static UIColor *commentOrange;
         self.usernameAndCaptionLabel.numberOfLines = 0;
         self.usernameAndCaptionLabel.backgroundColor = usernameLabelGray;
         
+        
         self.commentLabel = [[UILabel alloc] init];
         self.commentLabel.numberOfLines = 0;
         self.commentLabel.backgroundColor = commentLabelGray;
@@ -69,21 +72,32 @@ static UIColor *commentOrange;
         [self.likeButton addTarget:self action:@selector(likePressed:) forControlEvents:UIControlEventTouchUpInside];
         self.likeButton.backgroundColor = usernameLabelGray;
         
-        for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.likeButton]) {
+        self.commentView = [[ComposeCommentView alloc] init];
+        self.commentView.delegate = self;
+        
+        for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.likeButton, self.commentView]) {
             [self.contentView addSubview:view];
             view.translatesAutoresizingMaskIntoConstraints = NO;
         }
         
-        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel, _likeButton);
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-150-[_mediaImageView(100)]-125-|" options:kNilOptions metrics:nil views:viewDictionary]];
+        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel, _likeButton, _commentView);
+        
+
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=20)-[_mediaImageView(100)]-(>=125)-|" options:kNilOptions metrics:nil views:viewDictionary]];
+
+        
+        
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentView]|" options:kNilOptions metrics:nil views:viewDictionary]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_mediaImageView][_usernameAndCaptionLabel][_commentLabel]"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_mediaImageView][_usernameAndCaptionLabel][_commentLabel][_commentView(==100)]"
                                                                                  options:kNilOptions
                                                                                  metrics:nil
                                                                                    views:viewDictionary]];
+        
         
         self.imageHeightConstraint = [NSLayoutConstraint constraintWithItem:_mediaImageView
                                                                   attribute:NSLayoutAttributeHeight
@@ -116,6 +130,25 @@ static UIColor *commentOrange;
     }
     return self;
 }
+
+#pragma mark - ComposeCommentViewDelegate
+
+- (void) commentViewDidPressCommentButton:(ComposeCommentView *)sender {
+    [self.delegate cell:self didComposeComment:self.mediaItem.temporaryComment];
+}
+
+- (void) commentView:(ComposeCommentView *)sender textDidChange:(NSString *)text {
+    self.mediaItem.temporaryComment = text;
+}
+
+- (void) commentViewWillStartEditing:(ComposeCommentView *)sender {
+    [self.delegate cellWillStartComposingComment:self];
+}
+
+- (void) stopComposingComment {
+    [self.commentView stopComposingComment];
+}
+
 
  #pragma mark - Image View
 
@@ -285,6 +318,8 @@ static UIColor *commentOrange;
     self.usernameAndCaptionLabel.attributedText = [self usernameAndCaptionString];
     self.commentLabel.attributedText = [self commentString];
     self.likeButton.likeButtonState = mediaItem.likeState;
+    self.commentView.text = mediaItem.temporaryComment;
+    
 }
 
 
@@ -302,7 +337,7 @@ static UIColor *commentOrange;
     [layoutCell layoutIfNeeded];
     
     // Get the actual height required for the cell
-    return CGRectGetMaxY(layoutCell.commentLabel.frame);
+    return CGRectGetMaxY(layoutCell.commentView.frame);
 }
 
 
