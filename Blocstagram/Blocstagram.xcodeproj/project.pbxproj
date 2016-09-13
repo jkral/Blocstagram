@@ -33,6 +33,9 @@
 		C59AEF1C1D6A48FE004588A5 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEF1B1D6A48FE004588A5 /* Comment.m */; };
 		C59AEF1F1D6A4ADD004588A5 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEF1E1D6A4ADD004588A5 /* DataSource.m */; };
 		C59AEF221D6B8AD9004588A5 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEF211D6B8AD9004588A5 /* MediaTableViewCell.m */; };
+		C5A3C48A1D88A50900634DF8 /* CameraToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A3C4891D88A50900634DF8 /* CameraToolbar.m */; };
+		C5A3C48D1D88A6A000634DF8 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A3C48C1D88A6A000634DF8 /* CameraViewController.m */; };
+		C5A3C4901D88B35800634DF8 /* UIImage+ImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A3C48F1D88B35800634DF8 /* UIImage+ImageUtilities.m */; };
 		C5DFFF191D763B3900975E68 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DFFF181D763B3900975E68 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +81,12 @@
 		C59AEF1E1D6A4ADD004588A5 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		C59AEF201D6B8AD9004588A5 /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
 		C59AEF211D6B8AD9004588A5 /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
+		C5A3C4881D88A50900634DF8 /* CameraToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraToolbar.h; sourceTree = "<group>"; };
+		C5A3C4891D88A50900634DF8 /* CameraToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraToolbar.m; sourceTree = "<group>"; };
+		C5A3C48B1D88A6A000634DF8 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		C5A3C48C1D88A6A000634DF8 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		C5A3C48E1D88B35800634DF8 /* UIImage+ImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageUtilities.h"; sourceTree = "<group>"; };
+		C5A3C48F1D88B35800634DF8 /* UIImage+ImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageUtilities.m"; sourceTree = "<group>"; };
 		C5DFFF171D763B3800975E68 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C5DFFF181D763B3900975E68 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EB2FCC817850C4BCC4D2B562 /* Pods-Blocstagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocstagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blocstagram/Pods-Blocstagram.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +172,12 @@
 				C52AAFE31D82081500D4B03E /* LikeButton.m */,
 				C57C238F1D8747C400DF5230 /* ComposeCommentView.h */,
 				C57C23901D8747C400DF5230 /* ComposeCommentView.m */,
+				C5A3C4881D88A50900634DF8 /* CameraToolbar.h */,
+				C5A3C4891D88A50900634DF8 /* CameraToolbar.m */,
+				C5A3C48B1D88A6A000634DF8 /* CameraViewController.h */,
+				C5A3C48C1D88A6A000634DF8 /* CameraViewController.m */,
+				C5A3C48E1D88B35800634DF8 /* UIImage+ImageUtilities.h */,
+				C5A3C48F1D88B35800634DF8 /* UIImage+ImageUtilities.m */,
 			);
 			path = Blocstagram;
 			sourceTree = "<group>";
@@ -340,8 +355,11 @@
 				C59AEEEA1D64F9C6004588A5 /* AppDelegate.m in Sources */,
 				C5DFFF191D763B3900975E68 /* LoginViewController.m in Sources */,
 				C59AEF1F1D6A4ADD004588A5 /* DataSource.m in Sources */,
+				C5A3C48D1D88A6A000634DF8 /* CameraViewController.m in Sources */,
+				C5A3C48A1D88A50900634DF8 /* CameraToolbar.m in Sources */,
 				C59AEEE71D64F9C6004588A5 /* main.m in Sources */,
 				C52AAFE41D82081500D4B03E /* LikeButton.m in Sources */,
+				C5A3C4901D88B35800634DF8 /* UIImage+ImageUtilities.m in Sources */,
 				C57C23911D8747C400DF5230 /* ComposeCommentView.m in Sources */,
 				C52AAFE11D81F10F00D4B03E /* CircleSpinnerView.m in Sources */,
 				C59AEF131D6500CA004588A5 /* ImagesTableViewController.m in Sources */,
