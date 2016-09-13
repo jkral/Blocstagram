@@ -74,7 +74,18 @@
     UIBezierPath *buttonPath = [UIBezierPath bezierPathWithRect:areaToBlockText];
     
     self.textView.textContainer.exclusionPaths = @[buttonPath];
+    
+    
+    [UIView animateWithDuration:2.0 delay:1.0
+          usingSpringWithDamping:1.0 initialSpringVelocity:0.0f
+                         options:0 animations:^{
+                             
+                             [self layoutIfNeeded];
+                         } completion:nil];
+    
 }
+
+
 
 - (void) stopComposingComment {
     [self.textView resignFirstResponder];
