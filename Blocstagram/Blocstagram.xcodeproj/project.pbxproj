@@ -12,6 +12,9 @@
 		C52AAFCC1D7F963F00D4B03E /* MediaFullScreenAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AAFCB1D7F963F00D4B03E /* MediaFullScreenAnimator.m */; };
 		C52AAFE11D81F10F00D4B03E /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AAFE01D81F10F00D4B03E /* CircleSpinnerView.m */; };
 		C52AAFE41D82081500D4B03E /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AAFE31D82081500D4B03E /* LikeButton.m */; };
+		C571CEBE1D89D76400C1527F /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C571CEBD1D89D76400C1527F /* CropBox.m */; };
+		C571CEC11D89DD4300C1527F /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C571CEC01D89DD4200C1527F /* CropImageViewController.m */; };
+		C571CEC41D89E54B00C1527F /* ImageLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C571CEC31D89E54B00C1527F /* ImageLibraryViewController.m */; };
 		C57C23911D8747C400DF5230 /* ComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C57C23901D8747C400DF5230 /* ComposeCommentView.m */; };
 		C59AEEE71D64F9C6004588A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEEE61D64F9C6004588A5 /* main.m */; };
 		C59AEEEA1D64F9C6004588A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEEE91D64F9C6004588A5 /* AppDelegate.m */; };
@@ -50,6 +53,12 @@
 		C52AAFE01D81F10F00D4B03E /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
 		C52AAFE21D82081500D4B03E /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
 		C52AAFE31D82081500D4B03E /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
+		C571CEBC1D89D76400C1527F /* CropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropBox.h; sourceTree = "<group>"; };
+		C571CEBD1D89D76400C1527F /* CropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropBox.m; sourceTree = "<group>"; };
+		C571CEBF1D89DD4200C1527F /* CropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropImageViewController.h; sourceTree = "<group>"; };
+		C571CEC01D89DD4200C1527F /* CropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropImageViewController.m; sourceTree = "<group>"; };
+		C571CEC21D89E54B00C1527F /* ImageLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLibraryViewController.h; sourceTree = "<group>"; };
+		C571CEC31D89E54B00C1527F /* ImageLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLibraryViewController.m; sourceTree = "<group>"; };
 		C57C238F1D8747C400DF5230 /* ComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeCommentView.h; sourceTree = "<group>"; };
 		C57C23901D8747C400DF5230 /* ComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeCommentView.m; sourceTree = "<group>"; };
 		C59AEEE21D64F9C6004588A5 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +187,12 @@
 				C5A3C48C1D88A6A000634DF8 /* CameraViewController.m */,
 				C5A3C48E1D88B35800634DF8 /* UIImage+ImageUtilities.h */,
 				C5A3C48F1D88B35800634DF8 /* UIImage+ImageUtilities.m */,
+				C571CEBC1D89D76400C1527F /* CropBox.h */,
+				C571CEBD1D89D76400C1527F /* CropBox.m */,
+				C571CEBF1D89DD4200C1527F /* CropImageViewController.h */,
+				C571CEC01D89DD4200C1527F /* CropImageViewController.m */,
+				C571CEC21D89E54B00C1527F /* ImageLibraryViewController.h */,
+				C571CEC31D89E54B00C1527F /* ImageLibraryViewController.m */,
 			);
 			path = Blocstagram;
 			sourceTree = "<group>";
@@ -347,17 +362,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C52AAFC91D7F868300D4B03E /* MediaFullScreenViewController.m in Sources */,
+				C571CEC11D89DD4300C1527F /* CropImageViewController.m in Sources */,
 				C59AEF161D6A43E7004588A5 /* User.m in Sources */,
 				C59AEF1C1D6A48FE004588A5 /* Comment.m in Sources */,
 				C59AEF221D6B8AD9004588A5 /* MediaTableViewCell.m in Sources */,
 				C52AAFCC1D7F963F00D4B03E /* MediaFullScreenAnimator.m in Sources */,
 				C59AEF191D6A44E0004588A5 /* Media.m in Sources */,
 				C59AEEEA1D64F9C6004588A5 /* AppDelegate.m in Sources */,
+				C571CEBE1D89D76400C1527F /* CropBox.m in Sources */,
 				C5DFFF191D763B3900975E68 /* LoginViewController.m in Sources */,
 				C59AEF1F1D6A4ADD004588A5 /* DataSource.m in Sources */,
 				C5A3C48D1D88A6A000634DF8 /* CameraViewController.m in Sources */,
 				C5A3C48A1D88A50900634DF8 /* CameraToolbar.m in Sources */,
 				C59AEEE71D64F9C6004588A5 /* main.m in Sources */,
+				C571CEC41D89E54B00C1527F /* ImageLibraryViewController.m in Sources */,
 				C52AAFE41D82081500D4B03E /* LikeButton.m in Sources */,
 				C5A3C4901D88B35800634DF8 /* UIImage+ImageUtilities.m in Sources */,
 				C57C23911D8747C400DF5230 /* ComposeCommentView.m in Sources */,
