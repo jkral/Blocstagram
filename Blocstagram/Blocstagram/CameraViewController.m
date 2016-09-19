@@ -110,12 +110,14 @@
                 NSError *error = nil;
                 AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
                 if (!input) {
-                    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion preferredStyle:UIAlertControllerStyleAlert];
-                    [alertVC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK button") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                        [self.delegate cameraViewController:self didCompleteWithImage:nil];
-                    }]];
+//                    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion preferredStyle:UIAlertControllerStyleAlert];
+//                    [alertVC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK button") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//                        [self.delegate cameraViewController:self didCompleteWithImage:nil];
+//                    }]];
+//                    
+//                    [self presentViewController:alertVC animated:YES completion:nil];
                     
-                    [self presentViewController:alertVC animated:YES completion:nil];
+                    [self displayUIAlertError:error];
                 } else {
                     // #7
                     
@@ -137,6 +139,7 @@
                 }]];
                 
                 [self presentViewController:alertVC animated:YES completion:nil];
+                
             }
         });
     }];
@@ -165,30 +168,36 @@
             UIImage *image = [UIImage imageWithData:imageData scale:[UIScreen mainScreen].scale];
             
             // #11
-            image = [image imageWithFixedOrientation];
-            image = [image imageResizedToMatchAspectRatioOfSize:self.captureVideoPreviewLayer.bounds.size];
+//            image = [image imageWithFixedOrientation];
+//            image = [image imageResizedToMatchAspectRatioOfSize:self.captureVideoPreviewLayer.bounds.size];
             
             CGRect gridRect = self.cropBox.frame;
             
             CGRect cropRect = gridRect;
             cropRect.origin.x = (CGRectGetMinX(gridRect) + (image.size.width - CGRectGetWidth(gridRect)) / 2);
             
-            image = [image imageCroppedToRect:cropRect];
+//            image = [image imageCroppedToRect:cropRect];
+            
+            image = [image imageByScalingToSize:self.captureVideoPreviewLayer.bounds.size andCroppingWithRect:cropRect];
             
             // #13
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate cameraViewController:self didCompleteWithImage:image];
             });
         } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion preferredStyle:UIAlertControllerStyleAlert];
-                [alertVC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK button") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                    [self.delegate cameraViewController:self didCompleteWithImage:nil];
-                }]];
-                
-                [self presentViewController:alertVC animated:YES completion:nil];
-            });
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion preferredStyle:UIAlertControllerStyleAlert];
+//                [alertVC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK button") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//                    [self.delegate cameraViewController:self didCompleteWithImage:nil];
+//                }]];
+//                
+//                [self presentViewController:alertVC animated:YES completion:nil];
             
+            
+//            });
+            
+            
+            [self displayUIAlertError:error];
         }
     }];
 }
@@ -269,6 +278,18 @@
 }
 
 
+- (void) displayUIAlertError: (NSError*)error {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:error.localizedDescription message:error.localizedRecoverySuggestion preferredStyle:UIAlertControllerStyleAlert];
+        [alertVC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK button") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [self.delegate cameraViewController:self didCompleteWithImage:nil];
+        }]];
+        
+        [self presentViewController:alertVC animated:YES completion:nil];
+    });
+    
+}
 
 
 
