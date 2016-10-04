@@ -19,12 +19,16 @@
 @property (nonatomic, strong) UIImageView *mediaImageView;
 @property (nonatomic, strong) UILabel *usernameAndCaptionLabel;
 @property (nonatomic, strong) UILabel *commentLabel;
+
+
+
 @property (nonatomic, strong) NSLayoutConstraint *imageHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *usernameAndCaptionLabelHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *commentLabelHeightConstraint;
 
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *twoFingerTapGestureRecognizer;
 
 @property (nonatomic, strong) LikeButton *likeButton;
 @property (nonatomic, strong) ComposeCommentView *commentView;
@@ -61,6 +65,11 @@ static UIColor *commentOrange;
         self.longPressGestureRecognizer.delegate = self;
         [self.mediaImageView addGestureRecognizer:self.longPressGestureRecognizer];
         
+        self.twoFingerTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerTapFired:)];
+        self.twoFingerTapGestureRecognizer.delegate = self;
+        self.twoFingerTapGestureRecognizer.numberOfTouchesRequired = 2;
+        [self.contentView addGestureRecognizer:self.twoFingerTapGestureRecognizer];
+        
         
         self.usernameAndCaptionLabel = [[UILabel alloc] init];
         self.usernameAndCaptionLabel.numberOfLines = 0;
@@ -71,9 +80,13 @@ static UIColor *commentOrange;
         self.commentLabel.numberOfLines = 0;
         self.commentLabel.backgroundColor = commentLabelGray;
         
+
+        
         self.likeButton = [[LikeButton alloc] init];
         [self.likeButton addTarget:self action:@selector(likePressed:) forControlEvents:UIControlEventTouchUpInside];
         self.likeButton.backgroundColor = usernameLabelGray;
+        
+
         
         self.commentView = [[ComposeCommentView alloc] init];
         self.commentView.delegate = self;
@@ -82,6 +95,8 @@ static UIColor *commentOrange;
             [self.contentView addSubview:view];
             view.translatesAutoresizingMaskIntoConstraints = NO;
         }
+        
+      
         
         
         NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel, _likeButton, _commentView);
@@ -183,6 +198,11 @@ static UIColor *commentOrange;
     if (sender.state == UIGestureRecognizerStateBegan) {
         [self.delegate cell:self didLongPressImageView:self.mediaImageView];
     }
+}
+
+- (void) twoFingerTapFired:(UITapGestureRecognizer *)sender
+{
+    [self.delegate didTwoFingerTapCell:self];
 }
 
 #pragma mark - Liking
@@ -360,7 +380,8 @@ static UIColor *commentOrange;
     self.commentLabel.attributedText = [self commentString];
     self.likeButton.likeButtonState = mediaItem.likeState;
     self.commentView.text = mediaItem.temporaryComment;
-    
+//    int i = 5;
+//    self.commentLabel.text = [NSString stringWithFormat:@"%i", i];
 }
 
 

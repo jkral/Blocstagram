@@ -372,19 +372,19 @@
                                                 mediaItem.downloadState = MediaDownloadStateNeedsImage;
                                             }
                                         }
-                                        self.doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reloadMedia:)];
+                                        self.doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reloadMediaItem:)];
                                         self.doubleTap.numberOfTapsRequired = 2;
                                         
                                     }];
     }
 }
 
-- (void) reloadMedia:(Media *)mediaItem {
-    
-    NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
-    NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
-    [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
-}
+//- (void) reloadMedia:(Media *)mediaItem {
+//    
+//    NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+//    NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
+//    [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
+//}
 
 #pragma mark - Comments
 

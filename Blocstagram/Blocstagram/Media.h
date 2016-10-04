@@ -31,7 +31,9 @@ typedef NS_ENUM(NSInteger, MediaDownloadState) {
 @property (nonatomic, strong) NSString *temporaryComment;
 
 
- - (instancetype) initWithDictionary:(NSDictionary *)mediaDictionary;
+- (instancetype) initWithDictionary:(NSDictionary *)mediaDictionary;
+
+- (UIActivityViewController *)activityVC;
 
 
 

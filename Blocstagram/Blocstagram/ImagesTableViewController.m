@@ -155,7 +155,7 @@
 
 #pragma mark - UIScrollViewDelegate
 
- #4
+// #4
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self infiniteScrollIfNecessary];
 }
@@ -311,21 +311,19 @@
 }
 
 - (void) cell:(MediaTableViewCell *)cell didLongPressImageView:(UIImageView *)imageView {
-    NSMutableArray *itemsToShare = [NSMutableArray array];
     
-    if (cell.mediaItem.caption.length > 0) {
-        [itemsToShare addObject:cell.mediaItem.caption];
-    }
-    
-    if (cell.mediaItem.image) {
-        [itemsToShare addObject:cell.mediaItem.image];
-    }
-    
-    if (itemsToShare.count > 0) {
-        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
-        [self presentViewController:activityVC animated:YES completion:nil];
-    }
+    UIActivityViewController *activityVC = [cell.mediaItem activityVC];
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
+
+
+- (void) didTwoFingerTapCell:(MediaTableViewCell *)cell
+{
+    [[DataSource sharedInstance] downloadImageForMediaItem:cell.mediaItem];
+}
+
+
+
 - (void) cellDidPressLikeButton:(MediaTableViewCell *)cell {
     Media *item = cell.mediaItem;
     
@@ -481,7 +479,7 @@
 /*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
+    // Return NO if you do not want the item to be FG.
     return YES;
 }
 */

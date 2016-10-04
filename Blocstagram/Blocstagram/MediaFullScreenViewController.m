@@ -70,13 +70,20 @@
     
 }
 
-- (void) sharePressed {
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    NSArray *shareItems = @[self.media.image, self.media.caption];
+    [self centerScrollView];
+}
 
-        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:shareItems applicationActivities:nil];
-        [self presentViewController:activityVC animated:YES completion:nil];
-    
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void) sharePressed {
+    UIActivityViewController *activityVC = [self.media activityVC];
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 #pragma mark - Gesture Recognizers
@@ -159,16 +166,7 @@
     [self centerScrollView];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self centerScrollView];
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation

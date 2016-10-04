@@ -53,6 +53,25 @@
     return self;
 }
 
+- (UIActivityViewController *)activityVC {
+    
+    NSMutableArray *itemsToShare = [NSMutableArray arrayWithCapacity:2];
+    
+    if (self.caption.length > 0) {
+        [itemsToShare addObject:self.caption];
+    }
+    
+    if (self.image) {
+        [itemsToShare addObject:self.image];
+    }
+    
+    if (itemsToShare.count > 0) {
+        return [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+    } else {
+        return nil;
+    }
+}
+
 #pragma mark - NSCoding
 
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
@@ -77,6 +96,7 @@
         self.likeState = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(likeState))];
         
         
+        
     }
     
     return self;
@@ -90,6 +110,7 @@
     [aCoder encodeObject:self.caption forKey:NSStringFromSelector(@selector(caption))];
     [aCoder encodeObject:self.comments forKey:NSStringFromSelector(@selector(comments))];
     [aCoder encodeInteger:self.likeState forKey:NSStringFromSelector(@selector(likeState))];
+    
     
     
 }
