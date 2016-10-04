@@ -319,6 +319,7 @@
 
 - (void) didTwoFingerTapCell:(MediaTableViewCell *)cell
 {
+//    NSLog(@"did two finger tap");
     [[DataSource sharedInstance] downloadImageForMediaItem:cell.mediaItem];
 }
 

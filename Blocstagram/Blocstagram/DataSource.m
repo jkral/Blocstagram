@@ -25,7 +25,7 @@
 @property (nonatomic, assign) BOOL isLoadingOlderItems;
 @property (nonatomic, assign) BOOL thereAreNoMoreOlderMessages;
 @property (nonatomic, strong) AFHTTPRequestOperationManager *instagramOperationManager;
-@property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
+
 
 @end
 
@@ -372,19 +372,12 @@
                                                 mediaItem.downloadState = MediaDownloadStateNeedsImage;
                                             }
                                         }
-                                        self.doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reloadMediaItem:)];
-                                        self.doubleTap.numberOfTapsRequired = 2;
+                                        
                                         
                                     }];
     }
 }
 
-//- (void) reloadMedia:(Media *)mediaItem {
-//    
-//    NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
-//    NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
-//    [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
-//}
 
 #pragma mark - Comments
 
