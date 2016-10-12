@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UIImageView *mediaImageView;
 @property (nonatomic, strong) UILabel *usernameAndCaptionLabel;
 @property (nonatomic, strong) UILabel *commentLabel;
+@property (nonatomic, strong) UILabel *numberOfLikesLabel;
 
 
 
@@ -80,6 +81,12 @@ static UIColor *commentOrange;
         self.commentLabel.numberOfLines = 0;
         self.commentLabel.backgroundColor = commentLabelGray;
         
+        self.numberOfLikesLabel = [[UILabel alloc] init];
+        self.numberOfLikesLabel.numberOfLines = 0;
+        self.numberOfLikesLabel.backgroundColor = usernameLabelGray;
+        self.numberOfLikesLabel.textAlignment = NSTextAlignmentCenter;
+        self.numberOfLikesLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:16];
+        
 
         
         self.likeButton = [[LikeButton alloc] init];
@@ -91,7 +98,7 @@ static UIColor *commentOrange;
         self.commentView = [[ComposeCommentView alloc] init];
         self.commentView.delegate = self;
         
-        for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.likeButton, self.commentView]) {
+        for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.numberOfLikesLabel, self.likeButton, self.commentView]) {
             [self.contentView addSubview:view];
             view.translatesAutoresizingMaskIntoConstraints = NO;
         }
@@ -99,7 +106,7 @@ static UIColor *commentOrange;
       
         
         
-        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel, _likeButton, _commentView);
+        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel, _numberOfLikesLabel, _likeButton, _commentView);
         
 
         
@@ -127,7 +134,7 @@ static UIColor *commentOrange;
 
         
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_numberOfLikesLabel(==38)][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentView]|" options:kNilOptions metrics:nil views:viewDictionary]];
         
@@ -374,14 +381,14 @@ static UIColor *commentOrange;
 }
 
 - (void) setMediaItem:(Media *)mediaItem {
+
     _mediaItem = mediaItem;
     self.mediaImageView.image = _mediaItem.image;
     self.usernameAndCaptionLabel.attributedText = [self usernameAndCaptionString];
     self.commentLabel.attributedText = [self commentString];
     self.likeButton.likeButtonState = mediaItem.likeState;
     self.commentView.text = mediaItem.temporaryComment;
-//    int i = 5;
-//    self.commentLabel.text = [NSString stringWithFormat:@"%i", i];
+    self.numberOfLikesLabel.text = [NSString stringWithFormat:@"%i", mediaItem.numberOfLikes];
 }
 
 

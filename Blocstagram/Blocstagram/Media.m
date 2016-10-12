@@ -48,6 +48,9 @@
         BOOL userHasLiked = [mediaDictionary[@"user_has_liked"] boolValue];
         
         self.likeState = userHasLiked ? LikeStateLiked : LikeStateNotLiked;
+        
+        self.numberOfLikes = [mediaDictionary[@"likes"][@"count"] intValue];
+        
     }
     
     return self;
@@ -71,6 +74,8 @@
         return nil;
     }
 }
+
+
 
 #pragma mark - NSCoding
 
@@ -97,6 +102,7 @@
         
         
         
+        
     }
     
     return self;
@@ -110,6 +116,7 @@
     [aCoder encodeObject:self.caption forKey:NSStringFromSelector(@selector(caption))];
     [aCoder encodeObject:self.comments forKey:NSStringFromSelector(@selector(comments))];
     [aCoder encodeInteger:self.likeState forKey:NSStringFromSelector(@selector(likeState))];
+    
     
     
     
