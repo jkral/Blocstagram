@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
+@property (nonatomic, strong) UITapGestureRecognizer *windowTap;
 
 @end
 
@@ -28,6 +29,22 @@
     
     return self;
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    self.windowTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(windowTap:)];
+    self.windowTap.numberOfTapsRequired = 1;
+    self.windowTap.numberOfTouchesRequired = 1;
+    self.windowTap.delegate = self;
+    [self.windowTap setCancelsTouchesInView:NO];
+    
+    [self.view.window addGestureRecognizer:self.windowTap];
+    
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,6 +68,7 @@
     
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
     
+    
     self.doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapFired:)];
     self.doubleTap.numberOfTapsRequired = 2;
     
@@ -58,6 +76,7 @@
     
     [self.scrollView addGestureRecognizer:self.tap];
     [self.scrollView addGestureRecognizer:self.doubleTap];
+    
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self
@@ -84,13 +103,29 @@
 - (void) sharePressed {
     UIActivityViewController *activityVC = [self.media activityVC];
     [self presentViewController:activityVC animated:YES completion:nil];
+    
 }
+
+#pragma mark - UIGestureRecognizer Delegate
+
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
 
 #pragma mark - Gesture Recognizers
 
 - (void) tapFired:(UITapGestureRecognizer *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void) windowTap:(UITapGestureRecognizer *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
 
 - (void) doubleTapFired:(UITapGestureRecognizer *)sender {
     if (self.scrollView.zoomScale == self.scrollView.minimumZoomScale) {
