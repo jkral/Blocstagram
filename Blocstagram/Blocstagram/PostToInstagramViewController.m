@@ -286,6 +286,34 @@
         }
     }];
     
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIFilter *gloomFilter = [CIFilter filterWithName:@"CIGloom"];
+        CIFilter *depthFilter = [CIFilter filterWithName:@"CIDepthOfField"];
+        
+        if (gloomFilter) {
+            [gloomFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            
+            CIImage *result = gloomFilter.outputImage;
+            
+            if (depthFilter) {
+                [depthFilter setValue:result forKeyPath:kCIInputImageKey];
+                result = depthFilter.outputImage;
+            }
+            
+            [self addCIImageToCollectionView:result withFilterTitle:NSLocalizedString(@"Deep Gloom", @"Deep Gloom Filter")];
+        }
+    }];
+    
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIFilter *instantFilter = [CIFilter filterWithName:@"CIPhotoEffectInstant"];
+        
+        if (instantFilter) {
+            [instantFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:instantFilter.outputImage withFilterTitle:NSLocalizedString(@"Instant Photo", @"Instant Photo Filter")];
+        }
+    }];
+    
+    
     
     // Film filter
     
