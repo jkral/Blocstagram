@@ -1,0 +1,70 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0A8B5EA478B580954DA415C594CB98F5F7F4A91A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5450119CCA2DD394E9078F73A3071326A1F877FC" : 9223372036854775807,
+    "32D2620B5214B6AE206F9504666269AC11FC6C08" : 9223372036854775807,
+    "0A8B5EA478B580954DA415C594CB98F5F7F4A91A" : 9223372036854775807,
+    "CED1F276D76EF45347D7B53DFA111CA99A96FF9C" : 9223372036854775807,
+    "58FAB5F9C616D102DBD8A1135BA15699CFA06FA3" : 9223372036854775807,
+    "496BAB410F83CFCF3D9F35524BC4847363E39311" : 9223372036854775807,
+    "DF3D1FAACB3C377C3F4A2C8943D4C509D8112527" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4E0472CE-BBBD-46A9-85D0-0C2AEA5206BF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5450119CCA2DD394E9078F73A3071326A1F877FC" : "..\/ios-exercises",
+    "32D2620B5214B6AE206F9504666269AC11FC6C08" : "..\/BlocBrowser",
+    "0A8B5EA478B580954DA415C594CB98F5F7F4A91A" : "Blocstagram\/",
+    "CED1F276D76EF45347D7B53DFA111CA99A96FF9C" : "..\/Alcolator",
+    "58FAB5F9C616D102DBD8A1135BA15699CFA06FA3" : "..\/ios-static-analysis-exercises",
+    "496BAB410F83CFCF3D9F35524BC4847363E39311" : "..\/the_pantry",
+    "DF3D1FAACB3C377C3F4A2C8943D4C509D8112527" : "..\/2Alcolator"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Blocstagram",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Blocstagram\/Blocstagram.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jkral\/Blocstagram.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0A8B5EA478B580954DA415C594CB98F5F7F4A91A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jkral\/BlocBrowser.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "32D2620B5214B6AE206F9504666269AC11FC6C08"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jkral\/the_pantry.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "496BAB410F83CFCF3D9F35524BC4847363E39311"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jkral\/the_pantry.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "496BAB410F83CFCF3D9F35524BC4847363E39311"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jkral\/ios-exercises.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5450119CCA2DD394E9078F73A3071326A1F877FC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jkral\/ios-static-analysis-exercises.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "58FAB5F9C616D102DBD8A1135BA15699CFA06FA3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jkral\/Alcolator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CED1F276D76EF45347D7B53DFA111CA99A96FF9C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jkral\/2Alcolator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DF3D1FAACB3C377C3F4A2C8943D4C509D8112527"
+    }
+  ]
+}

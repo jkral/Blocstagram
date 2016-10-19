@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4DD1DAE4036D9182813DFE2F /* libPods-Blocstagram.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F86B8483599C255C6E0916A /* libPods-Blocstagram.a */; };
+		C5038B971DB69065009CDE3C /* ComposeCommentViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5038B961DB69065009CDE3C /* ComposeCommentViewTest.m */; };
+		C5038B9B1DB6C7AA009CDE3C /* MediaTableViewCellTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5038B9A1DB6C7AA009CDE3C /* MediaTableViewCellTest.m */; };
 		C52AAFC91D7F868300D4B03E /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AAFC81D7F868300D4B03E /* MediaFullScreenViewController.m */; };
 		C52AAFCC1D7F963F00D4B03E /* MediaFullScreenAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AAFCB1D7F963F00D4B03E /* MediaFullScreenAnimator.m */; };
 		C52AAFE11D81F10F00D4B03E /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AAFE01D81F10F00D4B03E /* CircleSpinnerView.m */; };
@@ -19,6 +21,7 @@
 		C571CED31D8CB2F600C1527F /* BlocstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C571CED21D8CB2F600C1527F /* BlocstagramTests.m */; };
 		C571CEDB1D8CB33700C1527F /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C571CEDA1D8CB33700C1527F /* UserTests.m */; };
 		C57C23911D8747C400DF5230 /* ComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C57C23901D8747C400DF5230 /* ComposeCommentView.m */; };
+		C58B5BC91DB5909700F29045 /* MediaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C58B5BC81DB5909700F29045 /* MediaTests.m */; };
 		C59AEEE71D64F9C6004588A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEEE61D64F9C6004588A5 /* main.m */; };
 		C59AEEEA1D64F9C6004588A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C59AEEE91D64F9C6004588A5 /* AppDelegate.m */; };
 		C59AEEF21D64F9C7004588A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C59AEEF11D64F9C7004588A5 /* Assets.xcassets */; };
@@ -58,6 +61,8 @@
 /* Begin PBXFileReference section */
 		0F86B8483599C255C6E0916A /* libPods-Blocstagram.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blocstagram.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5988CB700AA85C0E96773CEC /* Pods-Blocstagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocstagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blocstagram/Pods-Blocstagram.debug.xcconfig"; sourceTree = "<group>"; };
+		C5038B961DB69065009CDE3C /* ComposeCommentViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeCommentViewTest.m; sourceTree = "<group>"; };
+		C5038B9A1DB6C7AA009CDE3C /* MediaTableViewCellTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCellTest.m; sourceTree = "<group>"; };
 		C52AAFC71D7F868300D4B03E /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenViewController.h; sourceTree = "<group>"; };
 		C52AAFC81D7F868300D4B03E /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
 		C52AAFCA1D7F963F00D4B03E /* MediaFullScreenAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenAnimator.h; sourceTree = "<group>"; };
@@ -80,6 +85,7 @@
 		C571CEDA1D8CB33700C1527F /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		C57C238F1D8747C400DF5230 /* ComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeCommentView.h; sourceTree = "<group>"; };
 		C57C23901D8747C400DF5230 /* ComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeCommentView.m; sourceTree = "<group>"; };
+		C58B5BC81DB5909700F29045 /* MediaTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTests.m; sourceTree = "<group>"; };
 		C59AEEE21D64F9C6004588A5 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59AEEE61D64F9C6004588A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C59AEEE81D64F9C6004588A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -168,6 +174,9 @@
 				C571CED21D8CB2F600C1527F /* BlocstagramTests.m */,
 				C571CED41D8CB2F600C1527F /* Info.plist */,
 				C571CEDA1D8CB33700C1527F /* UserTests.m */,
+				C58B5BC81DB5909700F29045 /* MediaTests.m */,
+				C5038B961DB69065009CDE3C /* ComposeCommentViewTest.m */,
+				C5038B9A1DB6C7AA009CDE3C /* MediaTableViewCellTest.m */,
 			);
 			path = BlocstagramTests;
 			sourceTree = "<group>";
@@ -431,8 +440,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5038B9B1DB6C7AA009CDE3C /* MediaTableViewCellTest.m in Sources */,
+				C58B5BC91DB5909700F29045 /* MediaTests.m in Sources */,
 				C571CEDB1D8CB33700C1527F /* UserTests.m in Sources */,
 				C571CED31D8CB2F600C1527F /* BlocstagramTests.m in Sources */,
+				C5038B971DB69065009CDE3C /* ComposeCommentViewTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
