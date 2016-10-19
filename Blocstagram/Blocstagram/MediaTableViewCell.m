@@ -85,7 +85,7 @@ static UIColor *commentOrange;
         self.numberOfLikesLabel.numberOfLines = 0;
         self.numberOfLikesLabel.backgroundColor = usernameLabelGray;
         self.numberOfLikesLabel.textAlignment = NSTextAlignmentCenter;
-        self.numberOfLikesLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:16];
+        self.numberOfLikesLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
         
 
         
