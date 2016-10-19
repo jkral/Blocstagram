@@ -66,75 +66,6 @@
     return self;
 }
 
-#pragma mark - Buttons
-
-- (NSAttributedString *) sendAttributedString {
-    NSString *baseString = NSLocalizedString(@"SEND TO INSTAGRAM", @"send to Instagram button text");
-    NSRange range = [baseString rangeOfString:baseString];
-    
-    NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:baseString];
-    
-    [commentString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:13] range:range];
-    [commentString addAttribute:NSKernAttributeName value:@1.3 range:range];
-    [commentString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1] range:range];
-    
-    return commentString;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    [self.view addSubview:self.previewImageView];
-    [self.view addSubview:self.filterCollectionView];
-    
-    if (CGRectGetHeight(self.view.frame) > 500) {
-        [self.view addSubview:self.sendButton];
-    } else {
-        self.navigationItem.rightBarButtonItem = self.sendBarButton;
-    }
-    
-    [self.filterCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.filterCollectionView.backgroundColor = [UIColor whiteColor];
-    
-    self.navigationItem.title = NSLocalizedString(@"Apply Filter", @"apply filter view title");
-}
-
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    
-    CGFloat edgeSize = MIN(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
-    
-    if (CGRectGetHeight(self.view.bounds) < edgeSize * 1.5) {
-        edgeSize /= 1.5;
-    }
-    
-    
-    self.previewImageView.frame = CGRectMake(0, self.topLayoutGuide.length, edgeSize, edgeSize);
-    
-    CGFloat buttonHeight = 50;
-    CGFloat buffer = 10;
-    
-    CGFloat filterViewYOrigin = CGRectGetMaxY(self.previewImageView.frame) + buffer;
-    CGFloat filterViewHeight;
-    
-    if (CGRectGetHeight(self.view.frame) > 500) {
-        self.sendButton.frame = CGRectMake(buffer, CGRectGetHeight(self.view.frame) - buffer - buttonHeight, CGRectGetWidth(self.view.frame) - 2 * buffer, buttonHeight);
-        
-        filterViewHeight = CGRectGetHeight(self.view.frame) - filterViewYOrigin - buffer - buffer - CGRectGetHeight(self.sendButton.frame);
-    } else {
-        filterViewHeight = CGRectGetHeight(self.view.frame) - CGRectGetMaxY(self.previewImageView.frame) - buffer - buffer;
-    }
-    
-    self.filterCollectionView.frame = CGRectMake(0, filterViewYOrigin, CGRectGetWidth(self.view.frame), filterViewHeight);
-    
-    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.filterCollectionView.collectionViewLayout;
-    flowLayout.itemSize = CGSizeMake(CGRectGetHeight(self.filterCollectionView.frame) - 20, CGRectGetHeight(self.filterCollectionView.frame));
-}
-
 #pragma mark - UICollectionView delegate and data source
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -379,6 +310,77 @@
         }
     }];
 }
+
+#pragma mark - Buttons
+
+- (NSAttributedString *) sendAttributedString {
+    NSString *baseString = NSLocalizedString(@"SEND TO INSTAGRAM", @"send to Instagram button text");
+    NSRange range = [baseString rangeOfString:baseString];
+    
+    NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] initWithString:baseString];
+    
+    [commentString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:13] range:range];
+    [commentString addAttribute:NSKernAttributeName value:@1.3 range:range];
+    [commentString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1] range:range];
+    
+    return commentString;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    [self.view addSubview:self.previewImageView];
+    [self.view addSubview:self.filterCollectionView];
+    
+    if (CGRectGetHeight(self.view.frame) > 500) {
+        [self.view addSubview:self.sendButton];
+    } else {
+        self.navigationItem.rightBarButtonItem = self.sendBarButton;
+    }
+    
+    [self.filterCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.filterCollectionView.backgroundColor = [UIColor whiteColor];
+    
+    self.navigationItem.title = NSLocalizedString(@"Apply Filter", @"apply filter view title");
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    CGFloat edgeSize = MIN(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+    
+    if (CGRectGetHeight(self.view.bounds) < edgeSize * 1.5) {
+        edgeSize /= 1.5;
+    }
+    
+    
+    self.previewImageView.frame = CGRectMake(0, self.topLayoutGuide.length, edgeSize, edgeSize);
+    
+    CGFloat buttonHeight = 50;
+    CGFloat buffer = 10;
+    
+    CGFloat filterViewYOrigin = CGRectGetMaxY(self.previewImageView.frame) + buffer;
+    CGFloat filterViewHeight;
+    
+    if (CGRectGetHeight(self.view.frame) > 500) {
+        self.sendButton.frame = CGRectMake(buffer, CGRectGetHeight(self.view.frame) - buffer - buttonHeight, CGRectGetWidth(self.view.frame) - 2 * buffer, buttonHeight);
+        
+        filterViewHeight = CGRectGetHeight(self.view.frame) - filterViewYOrigin - buffer - buffer - CGRectGetHeight(self.sendButton.frame);
+    } else {
+        filterViewHeight = CGRectGetHeight(self.view.frame) - CGRectGetMaxY(self.previewImageView.frame) - buffer - buffer;
+    }
+    
+    self.filterCollectionView.frame = CGRectMake(0, filterViewYOrigin, CGRectGetWidth(self.view.frame), filterViewHeight);
+    
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.filterCollectionView.collectionViewLayout;
+    flowLayout.itemSize = CGSizeMake(CGRectGetHeight(self.filterCollectionView.frame) - 20, CGRectGetHeight(self.filterCollectionView.frame));
+}
+
+
 
 - (void) sendButtonPressed:(id)sender {
     NSURL *instagramURL = [NSURL URLWithString:@"instagram://location?id=1"];
