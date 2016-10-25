@@ -27,18 +27,56 @@
 }
 
 - (void) testMediaTableViewCellHeight {
+    
+    
+    
+    
+    NSDictionary *userDictionary = @{@"id": @"8675309",
+                                     @"username": @"d'oh",
+                                     @"full_name": @"Homer Simpson",
+                                     @"profile_picture" : @"http://www.example.com/example.jpg"};
+    
+    NSDictionary *mediaDictionary = @{@"user":userDictionary, @"caption": @{@"text": @"caption text"}, @"user_has_liked": @"YES", @"comments": @{@"data": @[]}, @"images": @{@"standard_resolution": @{@"url": @"http://example.com/example.jpg"}}};
+    
+    Media *media = [[Media alloc] initWithDictionary:mediaDictionary];
+    media.image = [UIImage imageNamed:@"1"];
+    
+    UITraitCollection *traitCollection = [[UIApplication sharedApplication] keyWindow].traitCollection;
+    CGFloat height = [MediaTableViewCell heightForMediaItem:media width:400 traitCollection:traitCollection];
+    
+    
+    XCTAssertEqual(height, 238, @"height should be equal");
+    
+    
+    
+    
+    
+    
+    
 
     
-    NSDictionary *mediaDictionary = nil;
-    
-    
-    Media *testMedia = [[Media alloc]initWithDictionary:mediaDictionary];
-    
-    testMedia.image = [UIImage imageNamed:@"1"];
-    
-    CGFloat height = [MediaTableViewCell heightForMediaItem:testMedia width:350 traitCollection:nil];
-  
-    XCTAssertEqual(height, 400);
+//    NSDictionary *mediaDictionary =  @{@"caption": @{@"text": @""}, @"user_has_liked": @"true", @"comments": @{@"data": @[]}, @"images": @{@"standard_resolution": @{@"url": @"http://example.com/example.jpg"}}};
+//  
+//  
+//  
+//  
+//  
+//  
+////  @{@"id" : @"5000",
+////                                      @"caption" : @{@"text" : @"caption text"},
+////                                      @"numberOfLikes" : @"10"};
+//    
+//                                                               
+//    
+//    
+//    Media *testMedia = [[Media alloc]initWithDictionary:mediaDictionary];
+//    
+//    testMedia.image = [UIImage imageNamed:@"1.jpg"];
+//    UITraitCollection *traitCollection = [[UIApplication sharedApplication] keyWindow].traitCollection;
+//    
+//    CGFloat height = [MediaTableViewCell heightForMediaItem:testMedia width:350 traitCollection:traitCollection];
+//  
+//    XCTAssertEqual(height, 350, @"height not equal");
 }
 
 @end

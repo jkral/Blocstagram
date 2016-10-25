@@ -34,13 +34,13 @@
     
     [super viewDidAppear:animated];
     
-    self.windowTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(windowTap:)];
-    self.windowTap.numberOfTapsRequired = 1;
-    self.windowTap.numberOfTouchesRequired = 1;
-    self.windowTap.delegate = self;
-    [self.windowTap setCancelsTouchesInView:NO];
-    
-    [self.view.window addGestureRecognizer:self.windowTap];
+//    self.windowTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(windowTap:)];
+//    self.windowTap.numberOfTapsRequired = 1;
+//    self.windowTap.numberOfTouchesRequired = 1;
+////    self.windowTap.delegate = self;
+//    [self.windowTap setCancelsTouchesInView:NO];
+//    
+//    [self.view.window addGestureRecognizer:self.windowTap];
     
 }
 
@@ -109,9 +109,9 @@
 #pragma mark - UIGestureRecognizer Delegate
 
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
-}
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    return YES;
+//}
 
 
 #pragma mark - Gesture Recognizers
@@ -120,9 +120,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) windowTap:(UITapGestureRecognizer *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (void) windowTap:(UITapGestureRecognizer *)sender {
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 
 

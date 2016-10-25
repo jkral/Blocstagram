@@ -87,6 +87,7 @@
     scrollViewCrop = [scrollViewCrop imageCroppedToRect:visibleRect];
     
     [self.delegate cropControllerFinishedWithImage:scrollViewCrop];
+    
 }
 
 @end

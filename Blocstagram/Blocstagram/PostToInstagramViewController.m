@@ -7,6 +7,7 @@
 //
 
 #import "PostToInstagramViewController.h"
+#import "PostToInstagramCollectionViewCell.h"
 
 @interface PostToInstagramViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIDocumentInteractionControllerDelegate>
 
@@ -73,6 +74,7 @@
 }
 
 - (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
     static NSInteger imageViewTag = 1000;
@@ -89,10 +91,10 @@
         thumbnail.contentMode = UIViewContentModeScaleAspectFill;
         thumbnail.tag = imageViewTag;
         thumbnail.clipsToBounds = YES;
-        
+    
         [cell.contentView addSubview:thumbnail];
     }
-    
+
     if (!label) {
         label = [[UILabel alloc] initWithFrame:CGRectMake(0, thumbnailEdgeSize, thumbnailEdgeSize, 20)];
         label.tag = labelTag;
@@ -340,7 +342,7 @@
         self.navigationItem.rightBarButtonItem = self.sendBarButton;
     }
     
-    [self.filterCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.filterCollectionView registerClass:[PostToInstagramCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.filterCollectionView.backgroundColor = [UIColor whiteColor];
