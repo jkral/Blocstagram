@@ -42,7 +42,7 @@
     media.image = [UIImage imageNamed:@"1"];
     
     UITraitCollection *traitCollection = [[UIApplication sharedApplication] keyWindow].traitCollection;
-    CGFloat height = [MediaTableViewCell heightForMediaItem:media width:400 traitCollection:traitCollection];
+    CGFloat height = [MediaTableViewCell heightForMediaItem:media width:200 traitCollection:traitCollection];
     
     
     XCTAssertEqual(height, 238, @"height should be equal");
