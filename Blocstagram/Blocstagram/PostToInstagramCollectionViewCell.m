@@ -8,28 +8,31 @@
 
 #import "PostToInstagramCollectionViewCell.h"
 
+@interface PostToInstagramCollectionViewCell()
+
+@property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout;;
+
+@end
+
 @implementation PostToInstagramCollectionViewCell
 
--(id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
 
+
+-(id)initWithFrame:(CGRect)frame {
     
-    static NSInteger imageViewTag = 1000;
-    static NSInteger labelTag = 1001;
+    self = [super initWithFrame:frame];
     
-    self.thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.thumbnailSize, self.thumbnailSize)];
-    self.thumbnail.contentMode = UIViewContentModeScaleAspectFill;
-    self.thumbnail.tag = imageViewTag;
-    self.thumbnail.clipsToBounds = YES;
+    UIImageView *thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.width)];
+    thumbnail.contentMode = UIViewContentModeScaleAspectFill;
+    thumbnail.clipsToBounds = YES;
+    self.thumbnail = thumbnail;
+    [self.contentView addSubview:thumbnail];
     
-    [self.contentView addSubview:self.thumbnail];
-    
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.thumbnailSize, self.thumbnailSize, 20)];
-    self.label.textAlignment = NSTextAlignmentCenter;
-    self.label.tag = labelTag;
-    self.label.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:10];
-    
-    [self.contentView addSubview:self.label];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, frame.size.width, frame.size.width, 20)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:10];
+    self.label = label;
+    [self.contentView addSubview:label];
     
     return self;
 }
