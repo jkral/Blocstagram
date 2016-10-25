@@ -13,6 +13,6 @@
 @property (nonatomic, strong) UIImageView *thumbnail;
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, assign) CGFloat thumbnailSize;
-@property (strong, nonatomic) UICollectionViewFlowLayout *collectionViewLayout;
+//@property (strong, nonatomic) UICollectionViewFlowLayout *collectionViewLayout;
 
 @end
